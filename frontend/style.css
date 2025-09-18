@@ -1,0 +1,106 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+#game-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows clues to wrap on smaller screens */
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* The crossword grid itself */
+#crossword-grid {
+    display: grid;
+    /* The --grid-size variable will be set by JavaScript */
+    grid-template-columns: repeat(var(--grid-size, 10), 40px);
+    grid-template-rows: repeat(var(--grid-size, 10), 40px);
+    border: 2px solid black;
+    background-color: black;
+    gap: 1px;
+}
+
+/* Individual cells in the grid */
+.grid-cell {
+    background-color: white;
+    position: relative;
+}
+
+/* Blacked-out cells */
+.grid-cell.black {
+    background-color: black;
+}
+
+/* --- NEW STYLES FOR INTERACTIVITY --- */
+
+/* Highlighting for the currently selected word */
+.grid-cell.highlight-word {
+    background-color: #dbeafe; /* Light blue */
+}
+
+/* Highlighting for the single active cell */
+.grid-cell.highlight-active {
+    background-color: #fef08a; /* Light yellow */
+}
+
+/* Input field inside each cell */
+.cell-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0;
+    caret-color: #3b82f6; /* Blue cursor */
+}
+/* Hides the arrows on number inputs in some browsers */
+.cell-input::-webkit-outer-spin-button,
+.cell-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* The small clue number inside a cell */
+.clue-number {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    /* Prevents the number from being selected */
+    pointer-events: none;
+}
+
+/* Styling for the clue lists */
+#clues-container {
+    display: flex;
+    gap: 30px;
+}
+
+.clue-list {
+    max-width: 250px;
+}
+.clue-list h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+.clue-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.clue-list li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
